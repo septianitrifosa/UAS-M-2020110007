@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,10 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('landing');
+// });
 
 Route::resource('account', AccountController::class);
+Route::get('/account/create', [AccountController::class, 'create'])->name('account.create');
+Route::get('/account/edit', [AccountController::class, 'edit'])->name('account.edit');
+
 Route::resource('transaction', TransactionController::class);
+Route::get('/Transaction/create', [TransactionController::class, 'create'])->name('transaction.create');
+
+
+Route::get('/', [AppController::class, 'index']);
 

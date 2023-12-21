@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->integer('id')->index()->autoIncrement90;
+            $table->string('kategori');
+            $table->double('nominal');
+            $table->string('tujuan');
+            $table->char('account_id');
+            $table->timestamp('created_at')->default(null);
+            $table->timestamp('updated_at')->default(null);
         });
     }
 

@@ -12,11 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('accounts', function (Blueprint $table) {
-            $table->id();
-            $table->string('kategori');
-            $table->double('nominal');
-            $table->string('tujuan');
-            $table->string('account_id');
+            $table->char('id', 16)->index() ->autoIncrement();
+            $table->string('nama');
+            $table->string('jenis', 50);
             $table->timestamp('created_at')->default(null);
             $table->timestamp('updated_at')->default(null);
         });
